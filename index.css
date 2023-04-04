@@ -74,6 +74,12 @@ header a:hover {
     padding: 45px 23px;
 }
 
+.site-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .home-container h1 {
     font-weight: 700;
     font-size: 2.25rem;
@@ -103,7 +109,16 @@ header a:hover {
 .home-container a:hover {
     transform: translate(1px, 1px);
 }
-
+footer {
+    background-color: #161616;
+    color: #AAAAAA;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
 
 /*** ABOUT PAGE ***/
 .about-hero-image {
@@ -234,10 +249,10 @@ i[class*='van-type-'] {
     color: black;
     text-decoration: none;
 }
-
+/* 
 .van-detail-container .back-button:visited {
     
-}
+} */
 
 .van-detail-container .back-button span {
     text-decoration: underline;
@@ -294,4 +309,10 @@ i[class*='van-type-'] {
     color: #161616;
     text-decoration: underline;
     font-weight: 600;
+}
+
+.active-header {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #161616;
 }

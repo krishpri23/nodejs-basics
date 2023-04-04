@@ -30,12 +30,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Relative Path - No need to add / as React knows the url is relative to the parent route */}
+
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
-          
+
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
