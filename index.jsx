@@ -5,44 +5,41 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Vans from "./pages/Vans/Vans"
 import VanDetail from "./pages/Vans/VanDetail"
-import Layout from "./components/Layout"
 import Dashboard from "./pages/Host/Dashboard"
+import Income from "./pages/Host/Income"
+import Reviews from "./pages/Host/Reviews"
+import Layout from "./components/Layout"
+import HostLayout from "./components/HostLayout"
 
 import "./server"
-import Income from './pages/Host/Income';
-import Reviews from './pages/Host/Reviews';
-import HostVans from './pages/Host/HostVans';
-import HostLayout from './components/HostLayout';
 
 /**
- * Challenge:
- * 1. Add a "Host" link to the Navbar that takes you to the "/host" path
- * 2. Create the following components in the pages/Host folder:
- *    a. Dashboard ("/host")
- *    b. Income ("/host/income")
- *    c. Reviews ("/host/reviews")
- *    These components can just have an h1 for now that says, e.g.
- *    "Host Dashboard here".
- * 3. Set up routes for each of these pages in the Routes below. FOR NOW,
- *    don't worry about nesting anything, you can just put them on the same
- *    level as the "/vans", etc. routes below.
+ * Challenge: Add the footer to the site! Make a separate Footer component
+ * in the components folder, and just use this as the markup:
+ * 
+ * <footer>&#169; 2022 #VANLIFE</footer>
+ * 
+ * I'm mostly wanting to test your ability to find where the footer would
+ * be added, and don't care too much about getting the styling correct.
+ * But if you feel you need extra CSS practice, feel free to do the styling
+ * as well!
+ * 
  */
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/vans/:id" element={<VanDetail />} />
-
-          <Route path='/' element={<HostLayout />} >
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<VanDetail />} />
+          
+          <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
-            <Route path="host/income" element={<Income />} />
-            <Route path="host/vans" element={<HostVans />} />
-            <Route path="host/reviews" element={<Reviews />} />
+            <Route path="income" element={<Income />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
       </Routes>

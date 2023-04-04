@@ -234,10 +234,10 @@ i[class*='van-type-'] {
     color: black;
     text-decoration: none;
 }
-/* 
+
 .van-detail-container .back-button:visited {
     
-} */
+}
 
 .van-detail-container .back-button span {
     text-decoration: underline;
