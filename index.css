@@ -316,3 +316,16 @@ i[class*='van-type-'] {
     text-decoration: underline;
     color: #161616;
 }
+
+/* HOST - VANS */
+
+.host-vans{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 5em;
+}
+
+.van {
+    background-color:white;
+}

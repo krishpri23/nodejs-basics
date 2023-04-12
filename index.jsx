@@ -12,6 +12,7 @@ import Layout from "./components/Layout"
 import HostLayout from "./components/HostLayout"
 
 import "./server"
+import HostVans from './pages/Host/HostVans';
 
 /**
  * Challenge: Add the footer to the site! Make a separate Footer component
@@ -42,6 +43,7 @@ function App() {
           <Route path="host" element={<HostLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVans />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
