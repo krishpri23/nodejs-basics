@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import vansList from "/data/vans.json";
 
 export default function Vans() {
-  const [vans, setVans] = useState(vansList.vans);
+  const vans = useLoaderData();
 
   return (
     <div className="van-list-container">
@@ -12,14 +12,16 @@ export default function Vans() {
         {vans &&
           vans.map((van) => (
             <div key={van.id} className="van-tile">
-              <img src={van.imageUrl} alt="" />
-              <div className="van-info">
-                <h3>{van.name}</h3>
-                <p>
-                  ${van.price} <span>/day</span>
-                </p>
-              </div>
-              <i className={`van-type ${van.type} selected`}>{van.type}</i>
+              <Link to={`/vans/${van.id}`}>
+                <img src={van.imageUrl} alt="" />
+                <div className="van-info">
+                  <h3>{van.name}</h3>
+                  <p>
+                    ${van.price} <span>/day</span>
+                  </p>
+                </div>
+                <i className={`van-type ${van.type} selected`}>{van.type}</i>
+              </Link>
             </div>
           ))}
       </div>
