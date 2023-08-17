@@ -5,6 +5,7 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  useRouteError,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -22,7 +23,8 @@ import HostLayout from "./layout/HostLayout";
 
 import "./server";
 
-import { VanDetail, VansLoader } from "./utils/loaders";
+import { VanDetail, VanListLoader, VansLoader } from "./utils/loaders";
+import HostVanDetails from "./pages/Host/HostVanDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,7 +44,13 @@ const router = createBrowserRouter(
         <Route path="host" element={<HostLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="income" element={<Income />} />
-          <Route path="vans" element={<HostVans />} />
+          <Route
+            path="vans"
+            element={<HostVans />}
+            loader={VanListLoader}
+            errorElement={<ErrorBoundary />}
+          />
+          <Route path="vans/:id" element={<HostVanDetails />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
 
@@ -57,3 +65,10 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+function ErrorBoundary() {
+  let error = useRouteError();
+  console.error(error);
+  // Uncaught ReferenceError: path is not defined
+  return <div> ERROR IN YOUR VANS COMPONENT</div>;
+}

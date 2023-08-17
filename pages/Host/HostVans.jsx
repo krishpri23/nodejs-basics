@@ -1,28 +1,31 @@
-import React from "react"
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
 
 export default function HostVans() {
-    return (
-        <div className="host-vans">
-            <h1>Your listed Vans</h1>
-            <div className="vans-lists">
-                <div className="van">
-                    <img src="" />
-                    <h2> Modest Explorer</h2>
-                    <p> $60/day </p>
-                </div>
-                <div className="van">
-                    <img src="" />
-                    <h2> Beach bum</h2>
-                    <p> $60/day </p>
-                </div>
-                <div className="van">
-                    <img src="" />
-                    <h2> Green wonder</h2>
-                    <p> $60/day </p>
-                </div>
-            </div>
+  const vans = useLoaderData();
+  console.log(vans);
 
-        </div>
-
-    )
+  return (
+    <section>
+      <h1 className="host-vans-title">Your listed Vans</h1>
+      <div className="host-vans-list">
+        {vans &&
+          vans.map((van) => (
+            <Link
+              to={`/host/vans/${van.id}`}
+              key={van.id}
+              className="host-van-link-wrapper"
+            >
+              <div className="host-van-single" key={van.id}>
+                <img src={van.imageUrl} alt={`Photo of ${van.name}`} />
+                <div className="host-van-info">
+                  <h3>{van.name}</h3>
+                  <p>${van.price}/day</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+      </div>
+    </section>
+  );
 }
