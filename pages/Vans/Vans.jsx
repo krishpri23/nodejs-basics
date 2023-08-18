@@ -32,7 +32,7 @@ export default function Vans() {
         <button
           // className="van-type simple"
           className={`van-type simple ${
-            vanType.toLowerCase() === "simple" ? "selected" : ""
+            vanType?.toLowerCase() === "simple" ? "selected" : ""
           }`}
           onClick={() => handleMergeParams("type", "simple")}
         >
@@ -41,7 +41,7 @@ export default function Vans() {
         <button
           // className="van-type rugged"
           className={`van-type simple ${
-            vanType.toLowerCase() === "rugged" ? "selected" : ""
+            vanType?.toLowerCase() === "rugged" ? "selected" : ""
           }`}
           onClick={() => handleMergeParams("type", "rugged")}
         >
@@ -50,7 +50,7 @@ export default function Vans() {
         <button
           // className="van-type luxury "
           className={`van-type simple ${
-            vanType.toLowerCase() === "luxury" ? "selected" : ""
+            vanType?.toLowerCase() === "luxury" ? "selected" : ""
           }`}
           onClick={() => handleMergeParams("type", "luxury")}
         >
@@ -71,7 +71,7 @@ export default function Vans() {
         {vans &&
           displayVans.map((van) => (
             <div key={van.id} className="van-tile">
-              <Link to={`/vans/${van.id}`}>
+              <Link to={van.id}>
                 <img src={van.imageUrl} alt="van image" />
                 <div className="van-info">
                   <h3>{van.name}</h3>
