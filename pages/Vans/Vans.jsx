@@ -1,15 +1,45 @@
 import React, { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 
 export default function Vans() {
   const vans = useLoaderData();
+  console.log(vans);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const vanType = searchParams?.get("type");
+  console.log(searchParams.get("type"));
+
+  // sort out vans based on type using query params
+  const displayVans = vanType
+    ? vans.filter((van) => van.type.toLowerCase() === vanType.toLowerCase())
+    : vans;
+
+  // van type button click handle
+  // function handleClick(event) {
+  //   const { name, value } = event?.target;
+  //   const params = setSearchParams({ [name]: value });
+  //   console.log(params);
+  // }
 
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
+      <div className="van-list-filter-buttons">
+        <Link className="van-type simple " to="?type=simple">
+          Simple{" "}
+        </Link>
+        <Link className="van-type rugged" to="?type=rugged">
+          Rugged
+        </Link>
+        <Link className="van-type luxury " to="?type=luxury">
+          Luxury
+        </Link>
+        <Link to="" className="van-type clear-filters">
+          clear filters{" "}
+        </Link>
+      </div>
       <div className="van-list">
         {vans &&
-          vans.map((van) => (
+          displayVans.map((van) => (
             <div key={van.id} className="van-tile">
               <Link to={`/vans/${van.id}`}>
                 <img src={van.imageUrl} alt="van image" />
