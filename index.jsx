@@ -23,7 +23,12 @@ import HostLayout from "./layout/HostLayout";
 
 import "./server";
 
-import { VanDetail, VanListLoader, VansLoader } from "./utils/loaders";
+import {
+  VanDetail,
+  VanListLoader,
+  VansLoader,
+  HostVanDetail,
+} from "./utils/loaders";
 import HostVanDetails from "./pages/Host/HostVanDetails";
 
 const router = createBrowserRouter(
@@ -50,7 +55,12 @@ const router = createBrowserRouter(
             loader={VanListLoader}
             errorElement={<ErrorBoundary />}
           />
-          <Route path="vans/:id" element={<HostVanDetails />} />
+          <Route
+            path="vans/:id"
+            element={<HostVanDetails />}
+            loader={HostVanDetail}
+            errorElement={<ErrorBoundary />}
+          />
           <Route path="reviews" element={<Reviews />} />
         </Route>
 

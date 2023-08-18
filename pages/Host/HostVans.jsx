@@ -9,7 +9,7 @@ export default function HostVans() {
     <section>
       <h1 className="host-vans-title">Your listed Vans</h1>
       <div className="host-vans-list">
-        {vans &&
+        {vans ? (
           vans.map((van) => (
             <Link
               to={`/host/vans/${van.id}`}
@@ -24,7 +24,10 @@ export default function HostVans() {
                 </div>
               </div>
             </Link>
-          ))}
+          ))
+        ) : (
+          <h2>Loading...</h2>
+        )}
       </div>
     </section>
   );

@@ -25,3 +25,13 @@ export const VanListLoader = async () => {
   console.log(vansList);
   return vansList;
 };
+
+//* /host/vans/:id
+
+export const HostVanDetail = async ({ params }) => {
+  const hostVanDetail = await fetch(`/api/host/vans/${params.id}`)
+    .then((res) => res.json())
+    .then((data) => data.vans);
+  console.log(hostVanDetail);
+  return hostVanDetail;
+};
