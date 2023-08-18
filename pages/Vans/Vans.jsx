@@ -13,12 +13,16 @@ export default function Vans() {
     ? vans.filter((van) => van.type.toLowerCase() === vanType.toLowerCase())
     : vans;
 
-  // van type button click handle
-  // function handleClick(event) {
-  //   const { name, value } = event?.target;
-  //   const params = setSearchParams({ [name]: value });
-  //   console.log(params);
-  // }
+  function handleMergeParams(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
 
   return (
     <div className="van-list-container">
@@ -26,29 +30,25 @@ export default function Vans() {
       <div className="van-list-filter-buttons">
         <button
           className="van-type simple "
-          to="?type=simple"
-          onClick={() => setSearchParams({ type: "simple" })}
+          onClick={() => handleMergeParams("type", "simple")}
         >
           Simple{" "}
         </button>
         <button
           className="van-type rugged"
-          to="?type=rugged"
-          onClick={() => setSearchParams({ type: "rugged" })}
+          onClick={() => handleMergeParams("type", "rugged")}
         >
           Rugged
         </button>
         <button
           className="van-type luxury "
-          to="?type=luxury"
-          onClick={() => setSearchParams({ type: "luxury" })}
+          onClick={() => handleMergeParams("type", "luxury")}
         >
           Luxury
         </button>
         <button
-          to=""
           className="van-type clear-filters"
-          onClick={() => setSearchParams({})}
+          onClick={() => handleMergeParams({})}
         >
           clear filters{" "}
         </button>
@@ -73,3 +73,19 @@ export default function Vans() {
     </div>
   );
 }
+
+//  MERGE query params in the url
+// function genNewSearchParamString(key, value) {
+// const sp = new URLSearchParams(searchParams);
+// if (value === null) {
+//   sp.delete(key);
+// } else {
+//   sp.set(key, value);
+// }
+// return `?${sp.toString()}`;
+// }
+//  <div>
+//         <Link to={genNewSearchParamString("type", "jedi")}>Jedi</Link>
+//         <Link to={genNewSearchParamString("type", "sith")}>Sith</Link>
+//         <Link to={genNewSearchParamString("type", null)}>Clear</Link>
+//   </div>
