@@ -6,6 +6,7 @@ export default function Vans() {
   console.log(vans);
   const [searchParams, setSearchParams] = useSearchParams();
   const vanType = searchParams?.get("type");
+  console.log(vanType);
   console.log(searchParams.get("type"));
 
   // sort out vans based on type using query params
@@ -29,29 +30,42 @@ export default function Vans() {
       <h1>Explore our van options</h1>
       <div className="van-list-filter-buttons">
         <button
-          className="van-type simple "
+          // className="van-type simple"
+          className={`van-type simple ${
+            vanType.toLowerCase() === "simple" ? "selected" : ""
+          }`}
           onClick={() => handleMergeParams("type", "simple")}
         >
           Simple{" "}
         </button>
         <button
-          className="van-type rugged"
+          // className="van-type rugged"
+          className={`van-type simple ${
+            vanType.toLowerCase() === "rugged" ? "selected" : ""
+          }`}
           onClick={() => handleMergeParams("type", "rugged")}
         >
           Rugged
         </button>
         <button
-          className="van-type luxury "
+          // className="van-type luxury "
+          className={`van-type simple ${
+            vanType.toLowerCase() === "luxury" ? "selected" : ""
+          }`}
           onClick={() => handleMergeParams("type", "luxury")}
         >
           Luxury
         </button>
-        <button
-          className="van-type clear-filters"
-          onClick={() => handleMergeParams({})}
-        >
-          clear filters{" "}
-        </button>
+        {vanType === null ? (
+          ""
+        ) : (
+          <button
+            className="van-type clear-filters"
+            onClick={() => handleMergeParams("type", null)} //! do not pass null as string
+          >
+            clear filters{" "}
+          </button>
+        )}
       </div>
       <div className="van-list">
         {vans &&
