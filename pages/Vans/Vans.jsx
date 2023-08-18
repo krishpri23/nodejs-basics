@@ -24,18 +24,34 @@ export default function Vans() {
     <div className="van-list-container">
       <h1>Explore our van options</h1>
       <div className="van-list-filter-buttons">
-        <Link className="van-type simple " to="?type=simple">
+        <button
+          className="van-type simple "
+          to="?type=simple"
+          onClick={() => setSearchParams({ type: "simple" })}
+        >
           Simple{" "}
-        </Link>
-        <Link className="van-type rugged" to="?type=rugged">
+        </button>
+        <button
+          className="van-type rugged"
+          to="?type=rugged"
+          onClick={() => setSearchParams({ type: "rugged" })}
+        >
           Rugged
-        </Link>
-        <Link className="van-type luxury " to="?type=luxury">
+        </button>
+        <button
+          className="van-type luxury "
+          to="?type=luxury"
+          onClick={() => setSearchParams({ type: "luxury" })}
+        >
           Luxury
-        </Link>
-        <Link to="" className="van-type clear-filters">
+        </button>
+        <button
+          to=""
+          className="van-type clear-filters"
+          onClick={() => setSearchParams({})}
+        >
           clear filters{" "}
-        </Link>
+        </button>
       </div>
       <div className="van-list">
         {vans &&
