@@ -6,8 +6,10 @@ export default function Vans() {
   console.log(vans);
   const [searchParams, setSearchParams] = useSearchParams();
   const vanType = searchParams?.get("type");
-  console.log(vanType);
-  console.log(searchParams.get("type"));
+  console.log(searchParams.toString());
+
+  const vanFilterType = searchParams.get("type");
+  console.log(vanFilterType);
 
   // sort out vans based on type using query params
   const displayVans = vanType
@@ -71,7 +73,16 @@ export default function Vans() {
         {vans &&
           displayVans.map((van) => (
             <div key={van.id} className="van-tile">
-              <Link to={van.id}>
+              <Link
+                to={van.id}
+                //* We are passing state props to set a stateful value for the new location which is stored inside history state.
+                //* To maintain the state of the filtered van type on back navigation, we pass params value
+                //* vanFilterType is extracted from query params to use it as back nav title
+                state={{
+                  search: searchParams.toString(),
+                  type: vanFilterType,
+                }}
+              >
                 <img src={van.imageUrl} alt="van image" />
                 <div className="van-info">
                   <h3>{van.name}</h3>
