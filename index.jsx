@@ -33,6 +33,7 @@ import HostVanDetails from "./pages/Host/HostVanDetails";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
+import Error from "./components/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,7 +43,12 @@ const router = createBrowserRouter(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="vans" element={<Vans />} loader={VansLoader} />
+        <Route
+          path="vans"
+          element={<Vans />}
+          loader={VansLoader}
+          errorElement={<Error />}
+        />
         <Route
           path="vans/:id"
           element={<VanDetailsPage />}

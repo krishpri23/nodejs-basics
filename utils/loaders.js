@@ -1,10 +1,17 @@
 //*  /vans
 export const VansLoader = async () => {
-  const vans = await fetch("/api/vans")
-    .then((res) => res.json())
-    .then((data) => data.vans);
-  console.log(vans);
-  return vans;
+  const res = await fetch("/api/vans");
+
+  if (!res.ok) {
+    throw {
+      message: "Failed to fetch vans",
+      status: res.status,
+      statusText: res.statusText,
+    };
+  }
+  const data = await res.json();
+  console.log(data);
+  return data.vans;
 };
 
 // * /vans/id

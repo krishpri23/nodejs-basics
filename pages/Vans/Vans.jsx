@@ -4,10 +4,13 @@ import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 export default function Vans() {
   const vans = useLoaderData();
   console.log(vans);
+
+  // Query params
   const [searchParams, setSearchParams] = useSearchParams();
   const vanType = searchParams?.get("type");
   console.log(searchParams.toString());
 
+  //get type of van
   const vanFilterType = searchParams.get("type");
   console.log(vanFilterType);
 
