@@ -3,7 +3,7 @@ import { Link, useLoaderData, useSearchParams } from "react-router-dom";
 
 export default function Vans() {
   const vans = useLoaderData();
-  console.log(vans);
+  console.log(vans.message);
 
   // Query params
   const [searchParams, setSearchParams] = useSearchParams();
