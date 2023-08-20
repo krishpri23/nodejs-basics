@@ -1,7 +1,14 @@
+import { redirect } from "react-router-dom";
+
 //*  /vans
 export const VansLoader = async () => {
-  const res = await fetch("/api/vans");
+  // protected routes
+  const isLoggedIn = true;
+  if (!isLoggedIn) {
+    return redirect("/login");
+  }
 
+  const res = await fetch("/api/vans");
   if (!res.ok) {
     throw {
       message: "Failed to fetch vans",
@@ -24,21 +31,33 @@ export const VanDetail = async ({ params }) => {
 };
 
 //* /host/vans
-
 export const VanListLoader = async () => {
-  const vansList = await fetch("/api/host/vans")
-    .then((res) => res.json())
-    .then((data) => data.vans);
-  console.log(vansList);
-  return vansList;
+  const res = await fetch("/api/host/vans");
+  if (!res.ok) {
+    throw {
+      message: "Failed to fetch vans",
+      status: res.status,
+      statusText: res.statusText,
+    };
+  }
+  const vansList = await res.json();
+  console.log(vansList.vans);
+  return vansList.vans;
 };
 
 //* /host/vans/:id
 
 export const HostVanDetail = async ({ params }) => {
-  const hostVanDetail = await fetch(`/api/host/vans/${params.id}`)
-    .then((res) => res.json())
-    .then((data) => data.vans);
-  console.log(hostVanDetail);
-  return hostVanDetail;
+  const res = await fetch(`/api/host/vans/${params.id}`);
+  if (!res.ok) {
+    throw {
+      message: "Failed to fetch vans",
+      status: res.status,
+      statusText: res.statusText,
+    };
+  }
+  const hostVanDetail = await res.json();
+  console.log(hostVanDetail.vans);
+  return hostVanDetail.vans;
+  vansList;
 };
