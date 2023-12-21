@@ -1,8 +1,10 @@
 {
   "name": "project",
   "dependencies": {
+    "@babel/traverse": "^7.23.6",
     "esbuild": "^0.19.2",
     "miragejs": "0.1.46",
+    "postcss": "^8.4.32",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.4.3"
