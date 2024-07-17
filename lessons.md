@@ -19,4 +19,6 @@
   }
 - To run project, `npm run dev`
 
-## Event Emitter
+## Building a web server (no framework)
+
+- main file as server.js,
