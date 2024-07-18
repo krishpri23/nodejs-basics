@@ -22,3 +22,14 @@
 ## Building a web server (no framework)
 
 - main file as server.js,
+
+## Middleware (express)
+
+Middleware is a request handler that allows you to intercept and manipulate requests and responses before they reach route handlers
+
+- custom - app.use(re,res,next)
+- built-in - app.use()
+- third-party - cors
+
+- app.use() - does not accept regex, more likely for middleware
+- app.all() - used for routing, accepts regex

@@ -3,6 +3,24 @@ const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3500;
 
+// works as waterfall so this will run first then app.get()
+
+// custom middleware
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} custom`);
+  next();
+});
+
+// built-in middleware for handling form data
+app.use(express.urlencoded({ extended: false }));
+
+// handling json data
+app.use(express.json());
+
+//serve static files
+app.use(express.static(path.join(__dirname, "./public")));
+
 app.get("^/$|/index(.html)?", (req, res) => {
   //   Current Directory: Suppose your script is located in /home/user/project/server.js.
   // __dirname: The value of __dirname would be /home/user/project.
@@ -20,7 +38,7 @@ app.get("/old-page(.html)?", (req, res) => {
   res.redirect(301, "/new-page.html"); //302 by default
 });
 
-// Route handlers
+// Route handlers - middleware
 app.get(
   "/hello(.html)?",
   (req, res, next) => {
