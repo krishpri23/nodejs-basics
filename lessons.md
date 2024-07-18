@@ -51,3 +51,7 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 ### CRUD example
 
 - Creating new employee, we should just add req.body to the obj structure we need.
+
+## JWT Auth
+
+- Install bcrypt package to securely hash and salt the password
