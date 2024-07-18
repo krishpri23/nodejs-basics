@@ -41,3 +41,13 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 ## REST API setup
 
 - create employee file to see how to create api
+
+## MVC pattern
+
+- data folder contains db details
+- controller folder contains employeeController which just implements the employee functionality for GET req in the employee
+- config folder to hold cors config options
+
+### CRUD example
+
+- Creating new employee, we should just add req.body to the obj structure we need.

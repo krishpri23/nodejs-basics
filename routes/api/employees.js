@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const data = {};
-
-// connect with db to get the data
-data.employees = require("../../data/employees.json");
+const employeeController = require("../../controllers/employeeController");
 
 // GET and POST can go the same route
 router
   .route("/")
   .get((req, res) => {
-    res.json(data.employees);
+    // this is basically controller
+    //res.json(data.employees);
+    employeeController.getAllEmployees;
   })
   .post((req, res) => {
     // we get params with req as it is post
