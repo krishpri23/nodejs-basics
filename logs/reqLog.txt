@@ -1,0 +1,12 @@
+20240717	23:13:58	7632c44a-5252-4aae-92ea-b202e9aa4f3c	GET	undefined	/
+20240717	23:13:58	a012369a-3a93-4bde-ac43-5590897c8d6a	GET	undefined	/css/style.css
+20240717	23:14:03	a255aa33-9b53-4198-9c4b-15bbaaece825	GET	undefined	/employees
+20240717	23:14:16	e54ff6d7-ef99-4633-aa62-6b743cf067ed	GET	undefined	/employees/33
+20240717	23:14:23	705ff98f-98ab-4dfc-9e07-5a6e5fe99ed2	POST	undefined	/employees/33
+20240717	23:14:43	d2daab41-693b-4578-b490-ebe6098ccf72	POST	undefined	/employees/33
+20240717	23:15:15	c6f0b40f-b1a9-45fc-9dd5-b64571912fda	POST	undefined	/employees/33
+20240717	23:15:49	93118a67-3a6e-4a03-8ab5-c7576d63010a	POST	undefined	/employees
+20240717	23:15:57	0244fa72-5c36-4619-bbd8-40fe42708e38	POST	undefined	/employees
+20240717	23:16:04	8a4966c2-bb83-45cd-a67c-d846ecbf8a32	POST	undefined	/employees
+20240717	23:16:04	b2b0ed70-1209-4c71-a8a3-efafd428dbd8	POST	undefined	/employees
+20240717	23:16:28	e7093b30-2634-490d-83df-dcf274a0f89c	GET	undefined	/employees
