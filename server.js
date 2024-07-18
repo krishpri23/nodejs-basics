@@ -21,14 +21,18 @@ app.use(express.json());
 //serve static files
 app.use(express.static(path.join(__dirname, "./public")));
 
-app.get("^/$|/index(.html)?", (req, res) => {
-  //   Current Directory: Suppose your script is located in /home/user/project/server.js.
-  // __dirname: The value of __dirname would be /home/user/project.
-  //  Express resolves the relative path ./views/index.html from the root directory /home/user/project, resulting in the absolute path /home/user/project/views/index.html.
-  //res.sendFile("./views/index.html", { root: __dirname });
-  //res.sendFile('./views/index.html', { root: __dirname });
-  res.sendFile(path.join(__dirname, "views", "index.html"));
-});
+// added router for this route
+app.use("/subdir", require("./routes/subdir"));
+app.use("/employees", require("./routes/api/employees"));
+
+// app.get("^/$|/index(.html)?", (req, res) => {
+//   //   Current Directory: Suppose your script is located in /home/user/project/server.js.
+//   // __dirname: The value of __dirname would be /home/user/project.
+//   //  Express resolves the relative path ./views/index.html from the root directory /home/user/project, resulting in the absolute path /home/user/project/views/index.html.
+//   //res.sendFile("./views/index.html", { root: __dirname });
+//   //res.sendFile('./views/index.html', { root: __dirname });
+//   res.sendFile(path.join(__dirname, "views", "index.html"));
+// });
 
 app.get("/new-page(.html)?", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "new-page.html"));

@@ -33,3 +33,11 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 
 - app.use() - does not accept regex, more likely for middleware
 - app.all() - used for routing, accepts regex
+
+## Routing
+
+- Routes folder handles all the routing info
+
+## REST API setup
+
+- create employee file to see how to create api
