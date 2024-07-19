@@ -65,3 +65,12 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 - In terminal, type node and then enter require('crypto').randomBytes(64).toString('hex')
 - crypto is a node core module
 - This creates env variables
+
+## User Roles & Permissions
+
+- Authentication is the process of identifying who someone is
+- Authorization is the process of verifying what resources someone has access to
+- JWT token allows access to api endpoints
+- send roles while sending the accessToken. On registering, give the role by default as User
+
+- To test the user roles, user must have roles assigned in the json file and token must be valid. verifyJWT middleware will run first then only go to employees route

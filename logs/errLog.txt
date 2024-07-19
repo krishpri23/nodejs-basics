@@ -1,2 +1,9 @@
 20240717	23:15:49	a8983e15-a898-48bc-b620-b7a18e4c308e	SyntaxError: Expected double-quoted property name in JSON at position 51
 20240718	18:58:01	dc12f91d-991d-4cbe-a74a-266fa91db922	JsonWebTokenError: jwt malformed
+20240719	15:20:53	0e79af30-8d4f-4ce9-a341-ac7e5fd1d492	TypeError: Cannot read properties of undefined (reading 'username')
+20240719	15:21:12	655a4f6e-3c39-4149-9703-07486ad66df9	TypeError: Cannot read properties of undefined (reading 'username')
+20240719	15:24:14	61c35118-058b-4a5f-8b2e-0e4c92c904c0	TypeError: Cannot read properties of undefined (reading 'username')
+20240719	15:26:24	197923e0-97dd-4872-b585-e71c08e4045a	TypeError: Cannot read properties of undefined (reading 'username')
+20240719	15:27:16	4018ac1c-8c96-4bab-93ce-3b99fc9988c6	TypeError: Cannot read properties of undefined (reading 'user')
+20240719	15:28:26	0360ad29-0b0f-42ee-aa7f-acebf4bd95e1	TypeError: Cannot read properties of undefined (reading 'username')
+20240719	15:28:54	6555a53f-b019-44da-a5c9-d19b8a1b60e7	TypeError: Cannot read properties of undefined (reading 'roles')
