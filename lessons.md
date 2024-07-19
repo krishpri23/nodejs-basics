@@ -64,3 +64,4 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 
 - In terminal, type node and then enter require('crypto').randomBytes(64).toString('hex')
 - crypto is a node core module
+- This creates env variables

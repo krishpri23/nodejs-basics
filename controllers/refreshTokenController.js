@@ -10,7 +10,7 @@ require("dotenv").config();
 const handleRefreshToken = (req, res) => {
   const cookies = req.cookies;
   console.log("cookie from req", req.cookies);
-  if (!cookies?.jwt) return res.sendStatus(401);
+  if (!cookies.jwt) return res.sendStatus(401);
   const refreshToken = cookies.jwt;
 
   const foundUser = usersDB.users.find(
@@ -19,8 +19,10 @@ const handleRefreshToken = (req, res) => {
   if (!foundUser) return res.sendStatus(403); //Forbidden
   // evaluate jwt
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-    if (err || foundUser.username !== decoded.username)
+    if (err || foundUser.username !== decoded.username) {
+      console.log(err, "refresh err");
       return res.sendStatus(403);
+    }
     const accessToken = jwt.sign(
       { username: decoded.username },
       process.env.ACCESS_TOKEN_SECRET,
