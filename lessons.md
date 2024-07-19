@@ -55,3 +55,12 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 ## JWT Auth
 
 - Install bcrypt package to securely hash and salt the password
+- Json Web Token : Form of user identification that has access and refresh token
+- Risk of xss and csrf. Not recommended to store token in local storage or cookie. store in memory
+- API will verify access token in middleware.
+- Refresh token as httpOnly cookie not accessible by javascript.
+
+### To create random token
+
+- In terminal, type node and then enter require('crypto').randomBytes(64).toString('hex')
+- crypto is a node core module
