@@ -8,7 +8,12 @@ const errorHandler = require("./middleware/errorHandler");
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
 const credentials = require("./middleware/credentials");
+const mongoose = require("mongoose");
+const connectDB = require("./config/DBConn");
 const PORT = process.env.PORT || 3500;
+
+//connect to DB
+connectDB();
 
 // custom middleware logger
 app.use(logger);
@@ -55,4 +60,7 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connection.once("open", () => {
+  console.log("mongodb connected");
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
