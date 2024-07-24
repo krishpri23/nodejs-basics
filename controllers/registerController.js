@@ -1,13 +1,4 @@
-const userDB = {
-  // more like use state in react
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require(".././model/User");
 const bcrypt = require("bcrypt");
 
 const handleNewUser = async (req, res) => {
@@ -16,28 +7,30 @@ const handleNewUser = async (req, res) => {
   if (!user || !pwd)
     return res.status(400).json({ message: "Username and password required" });
 
-  // check for duplicate  user
-  const duplicate = userDB.users.find((person) => person.username === user);
+  // check for duplicate usernames in db
+  // exec for async await required
+  const duplicate = await User.findOne({ username: user }).exec();
   if (duplicate) return res.sendStatus(409); // conflict
 
   try {
     // encrypt pwd
     const hashedPwd = await bcrypt.hash(pwd, 10); // saltRound
 
-    //store the new user
-    const newUser = {
+    // create and store new user
+    const result = await User.create({
       username: user,
       password: hashedPwd,
-      roles: {
-        User: 2001,
-      },
-    };
-    userDB.setUsers([...userDB.users, newUser]);
-    await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "users.json"), //destination
-      //actual data to write
-      JSON.stringify(userDB.users)
-    );
+      // roles not required as it is default
+      // roles: {
+      //   User: 2001,
+      // },
+    });
+
+    // Also correct
+    // const newUser = new User();
+    // newUser.username = user;
+
+    console.log(result);
 
     res.status(201).json({ success: "new user created" });
   } catch (error) {

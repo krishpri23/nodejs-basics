@@ -74,3 +74,9 @@ Middleware is a request handler that allows you to intercept and manipulate requ
 - send roles while sending the accessToken. On registering, give the role by default as User
 
 - To test the user roles, user must have roles assigned in the json file and token must be valid. verifyJWT middleware will run first then only go to employees route
+
+## MongoDB & Mongoose
+
+### Data Models
+
+- Everything in Mongoose starts with a Schema. Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
