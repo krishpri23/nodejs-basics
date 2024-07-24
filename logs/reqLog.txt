@@ -177,3 +177,6 @@
 20240722	22:10:23	c03cef90-8c0b-43ef-ad2e-73993527c67b	POST	undefined	/auth
 20240722	22:10:37	17e3d084-3800-4225-b502-652657d0fef3	GET	undefined	/employees
 20240722	22:10:51	aad8a350-c041-4728-adcd-2a07bf9ac98a	GET	undefined	/refresh
+20240723	20:03:13	ca7ecff6-cc7e-48f3-96e7-d54de64d018e	POST	undefined	/auth
+20240723	20:03:29	ed17d338-e717-40c2-878c-631d69396a86	GET	undefined	/refresh
+20240723	20:03:40	374128fd-a303-4335-a807-7ea2503cce08	GET	undefined	/refresh

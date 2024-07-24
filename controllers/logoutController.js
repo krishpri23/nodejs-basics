@@ -1,24 +1,13 @@
-const usersDB = {
-  users: require("../model/users.json"),
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
-
-const fsPromises = require("fs").promises;
-const path = require("path");
+const User = require("../model/User");
 
 const handleLogout = async (req, res) => {
   const cookies = req.cookies;
   console.log("cookie from req", req.cookies);
   if (!cookies?.jwt) return res.sendStatus(204); // no content to send back
   const refreshToken = cookies.jwt;
-  console.log("refresh token", refreshToken);
 
   // Is refreshToken in DB
-  const foundUser = usersDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const foundUser = await User.findOne({ refreshToken }).exec();
 
   if (!foundUser) {
     res.clearCookie("jwt", { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
@@ -26,15 +15,10 @@ const handleLogout = async (req, res) => {
   }
 
   // delete refreshToken in DB
-  const otherUsers = usersDB.users.filter(
-    (person) => person.refreshToken !== foundUser.refreshToken
-  );
-  const currentUser = { ...foundUser, refreshToken: "" };
+  foundUser.refreshToken = "";
+  const result = await foundUser.save();
+  console.log(result);
   usersDB.setUsers([...otherUsers, currentUser]);
-  await fsPromises.writeFile(
-    path.join(__dirname, "..", "model", "users.json"),
-    JSON.stringify(usersDB.users)
-  );
 
   res.clearCookie("jwt", { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
   res.sendStatus(204);
